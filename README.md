@@ -14,22 +14,32 @@ Steps:
 - Update the name of the YAML File as: vNet1-IaC-ARM.yml
 - Upload the below content into the YAML File main field area:
 
-on: [push]
-name: Azure ARM
-jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
+Here is the YAML formatted content:
 
-        # Checkout code
+```yaml
+name: Azure ARM with Cronitor Schedule & Monitor
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Schedules workflow to run every 5 minutes
+    # - cron: '30 7 1 6 *'  # Schedules workflow to run on June 1, 7:30AM
+    # - cron: '10 9 * * *'  # Schedules workflow to run same day at 9:10AM
+  workflow_dispatch:      # Deactivate this if you don't want a manual immediate execution included.
+  # Note You can generate/test your Cron expressions at https://crontab.cronhub.io/
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
       - uses: actions/checkout@main
 
-        # Log into Azure
+      # Log into Azure
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy ARM template
+      # Deploy ARM template
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
         with:
@@ -37,12 +47,14 @@ jobs:
           resourceGroupName: rg-mktDp-eastus-prod-7yt56
           template: ./vNetARMTemplateDeploy.json
 
-        # output containerName variable from template
+      # Output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
+```
 
 
 *References* 
 
+- https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions?tabs=userlevel
 - https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template
 - https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
 
