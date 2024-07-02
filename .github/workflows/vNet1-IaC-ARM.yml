@@ -16,6 +16,7 @@ on:
     # Run at 7:20 AM UTC on July 2, 2024
     # Run at 6:25 AM UTC on July 2, 2024
   schedule:
+    - cron: '26 7 * * *' # use this if schedule is for the same day
     - cron: '20 7 2 7 *'
     - cron: '25 7 2 7 *'
 
