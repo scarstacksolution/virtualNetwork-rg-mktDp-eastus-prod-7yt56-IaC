@@ -1,5 +1,6 @@
 # virtualNetwork-rg-mktDp-eastus-prod-7yt56-IaC
 
+*Deploy Azure Resource Manager (ARM) Template using GitHub*
 
 Steps:
 
@@ -39,4 +40,84 @@ jobs:
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
 
-- Learn more at: https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template
+
+*References* 
+
+- https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template
+- https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
+
+
+*Using Cron to Schedule an Automated Workflow Trigger*
+
+Key Things to Note:
+
+1. To trigger a GitHub Actions workflow at a specific date and time, you can use the `schedule` event with a cron expression in your workflow YAML file. 
+2. You can generate/test your Cron expressions at https://crontab.cronhub.io/
+3. The scheduled event can be delayed during periods of high loads of GitHub Actions workflow runs.
+4. * is a special character in YAML so you have to quote the string for your Cron expression schedule.
+5. To integrate Cronitor monitoring to your Workflow, you can visit https://cronitor.io and navigate to the "Jobs" left-memnu of the website to follow the provided instructions.
+
+Here is an example of how you can set this up:
+
+1. **Create or Edit your GitHub Actions Workflow YAML File**: This file is usually located in `.github/workflows/`.
+
+2. **Add the Schedule Trigger**: Use the `schedule` event with a cron expression to specify the date and time.
+
+Here is an example of a YAML file that triggers a workflow at a specific time:
+
+```yaml
+name: Scheduled Workflow
+
+on:
+  schedule:
+    # Run at 6:00 AM UTC on July 4, 2024
+    - cron: '0 6 4 7 *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run a script
+      run: echo "This run was triggered by a schedule!"
+```
+
+### Explanation:
+- The `cron` expression `0 6 4 7 *` means:
+  - `0` (minute): 0th minute (i.e., on the hour)
+  - `6` (hour): 6 AM (UTC)
+  - `4` (day of month): 4th day
+  - `7` (month): July
+  - `*` (day of week): Any day of the week
+
+### Important Points:
+- **UTC Time**: GitHub Actions uses UTC time for the schedule. You may need to adjust the time based on your local time zone.
+- **Cron Syntax**: Make sure your cron syntax is correct. You can use an online cron expression generator to verify your syntax.
+
+### Example for Weekly Trigger:
+If you want to run a job every week on Monday at 9:00 AM UTC, the cron expression would be:
+
+```yaml
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+```
+
+### Example for Daily Trigger:
+If you want to run a job every day at 2:30 PM UTC, the cron expression would be:
+
+```yaml
+on:
+  schedule:
+    - cron: '30 14 * * *'
+```
+
+*References*
+
+- https://github.com/marketplace/actions/cronitor-for-github-actions
+- https://www.tinybird.co/docs/guides/ingesting-data/scheduling-with-github-actions-and-cron
+
+
