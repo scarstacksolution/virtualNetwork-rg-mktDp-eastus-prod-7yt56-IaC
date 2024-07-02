@@ -1,4 +1,8 @@
-on: [push]
+on:
+  schedule:
+    # Run at 6:20 AM UTC on July 2, 2024
+    - cron: '20 6 2 7 *'
+    
 name: Azure ARM
 jobs:
     build-and-deploy:
