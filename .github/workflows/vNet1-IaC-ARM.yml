@@ -2,9 +2,10 @@ name: Azure ARM with Cronitor Schedule & Monitor
 
 on:
   schedule:
-    - cron: '53 8 * * *'
+    - cron: '*/5 * * * *' # use this if schedule is for the same day
+    - cron: '59 8 * * *'
     - cron: '36 7 2 7 *'
-  workflow_dispatch: # Deactivate this if you don't want a manual immediate executrion included.
+  #workflow_dispatch: # Deactivate this if you don't want a manual immediate executrion included.
 
 jobs:
     build-and-deploy:
