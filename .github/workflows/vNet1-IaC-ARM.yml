@@ -1,10 +1,6 @@
 name: Azure ARM with Cronitor Schedule and Monitor
 
 on:
-    # Use workflow_dispatch as shown below, to manually trigger the workflow and verify 
-    # https://crontab.cronhub.io/
-    # Run at 7:20 AM UTC on July 2, 2024
-    # Run at 6:25 AM UTC on July 2, 2024
   schedule:
     - cron: '49 7 * * *' # use this if schedule is for the same day
     - cron: '33 7 2 7 *'
