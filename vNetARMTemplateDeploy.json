@@ -1,0 +1,49 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "resources": [
+        {
+            "name": "vnet-mktDp-eastus-prod-7yt56",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-06-15",
+            "dependsOn": [],
+            "tags": {
+                         "Department": "Marketing",
+                         "Environment": "Production",
+                         "Cost-Center": "CST-PR-M476",
+                         "Project": "EcoEnergyReform",
+                         "Team": "FinanceSupportTeam"
+                     },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('vnet-mktDp-eastus-prod-7yt56Prefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('vnet-mktDp-eastus-prod-7yt56Subnet1Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('vnet-mktDp-eastus-prod-7yt56Subnet1Prefix')]"
+                        }
+                    },
+                    {
+                        "name": "[variables('vnet-mktDp-eastus-prod-7yt56Subnet2Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('vnet-mktDp-eastus-prod-7yt56Subnet2Prefix')]"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "variables": {
+        "vnet-mktDp-eastus-prod-7yt56Prefix": "10.0.0.0/16",
+        "vnet-mktDp-eastus-prod-7yt56Subnet1Name": "Sbnet-1-mktDp-eastus-prod-7yt56",
+        "vnet-mktDp-eastus-prod-7yt56Subnet1Prefix": "10.0.0.0/24",
+        "vnet-mktDp-eastus-prod-7yt56Subnet2Name": "Sbnet-2-mktDp-eastus-prod-7yt56",
+        "vnet-mktDp-eastus-prod-7yt56Subnet2Prefix": "10.0.1.0/24"
+    }
+}
