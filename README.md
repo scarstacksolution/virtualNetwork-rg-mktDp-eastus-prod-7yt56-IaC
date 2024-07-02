@@ -13,6 +13,7 @@ Steps:
 - Update the name of the YAML File as: vNet1-IaC-ARM.yml
 - Upload the below content into the YAML File main field area:
 
+# "push" ensures automatic trigger of the YAML file if any file change is made
 on: [push]
 name: Azure ARM
 jobs:
