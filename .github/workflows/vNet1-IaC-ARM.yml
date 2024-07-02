@@ -1,9 +1,18 @@
+name: Append data data every day at 00:10
+
 on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    # https://crontab.cronhub.io/
+    # Run at 6:31 AM UTC on July 2, 2024
+    # Run at 6:35 AM UTC on July 2, 2024
   schedule:
-    # Run at 6:20 AM UTC on July 2, 2024
-    - cron: '20 6 2 7 *'
-    
-name: Azure ARM
+    - cron: '47 6 2 7 *'
+    - cron: '49 6 2 7 *'
+
 jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
