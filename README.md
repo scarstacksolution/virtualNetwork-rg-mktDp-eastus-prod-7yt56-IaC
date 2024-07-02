@@ -65,9 +65,10 @@ Key Things to Note:
 
 1. To trigger a GitHub Actions workflow at a specific date and time, you can use the `schedule` event with a cron expression in your workflow YAML file. 
 2. You can generate/test your Cron expressions at https://crontab.cronhub.io/
-3. The scheduled event can be delayed during periods of high loads of GitHub Actions workflow runs.
-4. * is a special character in YAML so you have to quote the string for your Cron expression schedule.
-5. To integrate Cronitor monitoring to your Workflow, you can visit https://cronitor.io and navigate to the "Jobs" left-memnu of the website to follow the provided instructions.
+3. Use workflow_dispatch in your YAML file to manually trigger the workflow and verify 
+4. The scheduled event can be delayed during periods of high loads of GitHub Actions workflow runs.
+5. * is a special character in YAML so you have to quote the string for your Cron expression schedule.
+6. To integrate Cronitor monitoring to your Workflow, you can visit https://cronitor.io and navigate to the "Jobs" left-memnu of the website to follow the provided instructions.
 
 Here is an example of how you can set this up:
 
