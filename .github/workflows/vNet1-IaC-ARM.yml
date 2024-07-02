@@ -1,22 +1,13 @@
-name: Azure ARM with Cronitor Automated Schedule and Monitoring
+name: Azure ARM with Cronitor Schedule and Monitor
 
 on:
-  push:
-  # Step 1: Integrate Cronitor monitoring
-  workflow_run:
-    workflows: ['*']
-    types: [requested,completed]
-    
-    branches:
-      - main  
-    
   #workflow_dispatch: # Activate this for manual run
     # Use workflow_dispatch to manually trigger the workflow and verify 
     # https://crontab.cronhub.io/
     # Run at 7:20 AM UTC on July 2, 2024
     # Run at 6:25 AM UTC on July 2, 2024
   schedule:
-    - cron: '1 * * * *' # use this if schedule is for the same day
+    - cron: '49 7 * * *' # use this if schedule is for the same day
     - cron: '33 7 2 7 *'
     - cron: '36 7 2 7 *'
 
