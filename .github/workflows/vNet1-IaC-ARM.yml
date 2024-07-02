@@ -5,19 +5,29 @@ on:
     branches:
       - main
 
-  #workflow_dispatch: # NOTE: Activate this for manual run
+  #workflow_dispatch: # Activate this for manual run
     # Use workflow_dispatch to manually trigger the workflow and verify 
     # https://crontab.cronhub.io/
-    # Run at 6:31 AM UTC on July 2, 2024
-    # Run at 6:35 AM UTC on July 2, 2024
+    # Run at 7:20 AM UTC on July 2, 2024
+    # Run at 6:25 AM UTC on July 2, 2024
   schedule:
-    - cron: '4 7 2 7 *'
-    - cron: '7 7 2 7 *'
+    - cron: '20 7 2 7 *'
+    - cron: '25 7 2 7 *'
 
 jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
+
+      #Integrate Cronitor monitoring
+      - name: Send execution details to the Cronitor for Github Actions agent
+        uses: cronitorio/monitor-github-actions@v7
+        with:
+          event: ${{ toJSON(github.event) }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          cronitor_key: ${{ secrets.CRONITOR_API_KEY }}
+          cronitor_group: actions
+          cronitor_notify: default
 
         # Checkout code
       - uses: actions/checkout@main
