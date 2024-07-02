@@ -20,7 +20,6 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: rg-mktDp-eastus-prod-7yt56
           template: ./vNetARMTemplateDeploy.json
-          parameters: location=eastus
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
