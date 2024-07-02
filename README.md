@@ -38,3 +38,5 @@ jobs:
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
+
+- Learn more at: https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template
