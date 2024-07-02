@@ -3,10 +3,10 @@ name: Azure ARM with Cronitor Schedule
 
 on:
   schedule:
+    - cron: '30 7 3 7 *'  # Schedules workflow to run on a specific date
     #- cron: '*/5 * * * *' # Schedules workflow to run every 5 minutes
-    #- cron: '58 9 * * *'  # Schedules workflow to run every 5 minutes
     #- cron: '30 7 1 6 *'  # Schedules workflow to run on June 1, 7:30AM
-    - cron: '50 16 * * *'  # Schedules workflow to run same day at 9:10AM
+    #- cron: '10 9 * * *'  # Schedules workflow to run same day at 9:10AM
   #workflow_dispatch:     # Deactivate this if you don't want a manual immediate execution included.
 
 jobs:
