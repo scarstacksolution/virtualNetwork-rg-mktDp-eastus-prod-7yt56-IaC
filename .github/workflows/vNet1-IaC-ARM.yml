@@ -1,5 +1,5 @@
 
-name: Azure ARM with Cronitor Schedule and Monitor
+name: Azure ARM with Cronitor Schedule & Monitor
 
 on:
   schedule:
