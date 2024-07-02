@@ -1,6 +1,7 @@
 name: Azure ARM with Cronitor Automated Schedule and Monitoring
 
 on:
+  push:
   # Step 1: Integrate Cronitor monitoring
   workflow_run:
     workflows: ['*']
