@@ -1,14 +1,13 @@
-name: Append data data every day at 00:10
+name: Azure ARM with Cronitor Automated Schedule and Monitoring
 
 on:
-  push:
-    branches:
-      - main
-
   # Step 1: Integrate Cronitor monitoring
   workflow_run:
-    workflows: ['*']
+    workflows: ['Stage Deploy']
     types: [requested,completed]
+    
+    branches:
+      - main  
     
   #workflow_dispatch: # Activate this for manual run
     # Use workflow_dispatch to manually trigger the workflow and verify 
