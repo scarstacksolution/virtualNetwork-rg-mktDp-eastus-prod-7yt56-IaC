@@ -10,8 +10,8 @@ on:
     # Run at 6:31 AM UTC on July 2, 2024
     # Run at 6:35 AM UTC on July 2, 2024
   schedule:
-    - cron: '47 6 2 7 *'
-    - cron: '49 6 2 7 *'
+    - cron: '3 7 2 7 *'
+    - cron: '6 7 2 7 *'
 
 jobs:
     build-and-deploy:
