@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+  # Step 1: Integrate Cronitor monitoring
+  workflow_run:
+    workflows: ['*']
+    types: [requested,completed]
+    
   #workflow_dispatch: # Activate this for manual run
     # Use workflow_dispatch to manually trigger the workflow and verify 
     # https://crontab.cronhub.io/
@@ -19,7 +24,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
 
-      #Integrate Cronitor monitoring
+      # Step 2: Integrate Cronitor monitoring
       - name: Send execution details to the Cronitor for Github Actions agent
         uses: cronitorio/monitor-github-actions@v7
         with:
