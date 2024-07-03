@@ -10,6 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+
+- script: ls -la
+  displayName: 'List files in the working directory'
+
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -18,8 +23,6 @@ steps:
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'rg-IaC-ARMPipelinesAzure'
     location: 'East US'
-    templateLocation: 'URL of the file'
+    templateLocation: 'Linked artifact'
     csmFile: 'vNetARMTemplateDeploy.json'
-    #csmParametersFile: 'templates/parameters.json'
-    #csmFileLink: 'https://github.com/scarstacksolution/virtualNetwork-rg-mktDp-eastus-prod-7yt56-IaC/blob/main/vNetARMTemplateDeploy.json'
     deploymentMode: 'Incremental'
