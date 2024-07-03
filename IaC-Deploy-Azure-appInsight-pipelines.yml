@@ -19,6 +19,7 @@ steps:
     resourceGroupName: 'rg-IaC-ARMPipelinesAzure'
     location: 'East US'
     templateLocation: 'URL of the file'
-    csmFile: /vNetARMTemplateDeploy.json
+    csmFile: '/vNetARMTemplateDeploy.json'
+    #csmParametersFile: 'templates/parameters.json'
     #csmFileLink: 'https://github.com/scarstacksolution/virtualNetwork-rg-mktDp-eastus-prod-7yt56-IaC/blob/main/vNetARMTemplateDeploy.json'
     deploymentMode: 'Incremental'
