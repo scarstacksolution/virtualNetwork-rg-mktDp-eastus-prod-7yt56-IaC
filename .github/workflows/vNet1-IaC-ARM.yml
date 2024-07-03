@@ -5,6 +5,9 @@ on:
   schedule:
     #- cron: '*/5 * * * *' # Schedules workflow to run every 5 minutes
      - cron: '0 9 3 * *'   # Schedules workflow at 09:00 AM, on day 3 of the month
+     - cron: '45 10 * * WED'   # At 10:45 AM, only on Tuesday
+     - cron: '47 10 * * *'
+     - cron: '49 10 * * 3'
     #- cron: '30 7 1 6 *'  # Schedules workflow to run on June 1, 7:30AM
     #- cron: '10 9 * * *'  # Schedules workflow to run same day at 9:10AM
   #workflow_dispatch:      # Deactivate this if you don't want a manual immediate execution included.
