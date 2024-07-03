@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'ScarStack_Azure_subscription 1 (d8063b4c-5a26-4bb2-a00b-b40ab0c2ba66)'
+    subscriptionId: 'd8063b4c-5a26-4bb2-a00b-b40ab0c2ba66'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rg-IaC-ARMPipelinesAzure'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/scarstacksolution/virtualNetwork-rg-mktDp-eastus-prod-7yt56-IaC/blob/main/vNetARMTemplateDeploy.json'
+    deploymentMode: 'Incremental'
