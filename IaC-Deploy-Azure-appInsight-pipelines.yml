@@ -18,8 +18,8 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'ScarStack_Azure_subscription 1 (d8063b4c-5a26-4bb2-a00b-b40ab0c2ba66)'
-    subscriptionId: 'd8063b4c-5a26-4bb2-a00b-b40ab0c2ba66'
+    azureResourceManagerConnection: 'Scarstack-IT-Training-Subscription (11eacc51-44b5-4174-9eeb-19f92f53ecc9)'
+    subscriptionId: '11eacc51-44b5-4174-9eeb-19f92f53ecc9'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'rg-IaC-ARMPipelinesAzure'
     location: 'East US'
