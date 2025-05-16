@@ -1,7 +1,9 @@
 name: Azure ARM with Cronitor Schedule
 
 on:
-  workflow_dispatch:      # Deactivate this if you don't want a manual immediate execution included.
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  workflow_dispatch:       # Allows manual trigger
 
 jobs:
     build-and-deploy:
